@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import { useState } from "react";
 import { useEnderecos } from "../context/enderecoContext";
+import { useRouter } from "next/router";
 
 //Formulario para cadastrar novo endereco
 const EnderecoForm = () => {
@@ -15,6 +16,9 @@ const EnderecoForm = () => {
 
     const { createEndereco } = useEnderecos();
 
+    //Pegando método push
+    const {push} = useRouter();
+
     //Atualizando Enderecos
     const handleChange = e => {
         const {name, value} = e.target
@@ -24,6 +28,7 @@ const EnderecoForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
         createEndereco(endereco.nome, endereco.numero, endereco.cep, endereco.tipo);
+        push("/");
     }
 
     return (
