@@ -1,8 +1,16 @@
 import { useEnderecos } from "../context/enderecoContext";
+import Layout from "../components/Layout";
 
 const Home = () => {
 
-    return <div>Hello</div>
-  };
+  //Importando enderecos
+  const { enderecos } = useEnderecos();
 
-  export default Home;
+  return (
+    <Layout>
+      <div>Hello</div>
+    </Layout>
+  );
+};
+
+export default Home;
