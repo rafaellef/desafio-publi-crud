@@ -48,7 +48,7 @@ const EnderecoForm = () => {
 
             <form
                 onSubmit={handleSubmit}
-                className="flex flex-col w-full bg-gray-200 mt-20 justify-center items-center rounded-lg">
+                className="flex flex-col w-full bg-gray-200 mt-10 justify-center items-center rounded-lg">
                 <h1 className="text-xl py-2 font-semibold" /*Criando condicional para alterar texto da página */>{query.id ? 'Editar Endereço' : 'Adicionar Endereço'}</h1>
 
                 <input
