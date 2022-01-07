@@ -22,9 +22,12 @@ export const EnderecoProvider = ({ children }) => {
         setEnderecos([...enderecos.map(endereco => endereco.id === id ? {...endereco, ...enderecoEditado} : endereco), ]);
     };
 
+    //Função para excluir endereco
+    const excluirEndereco = id => setEnderecos([...enderecos.filter(endereco => endereco.id !== id)]);
+
     return (
-        <EnderecoContext.Provider value={{ enderecos, createEndereco, editarEndereco }}>
+        <EnderecoContext.Provider value={{ enderecos, createEndereco, editarEndereco, excluirEndereco }}>
             {children}
         </EnderecoContext.Provider>
-    )
-}
+    );
+};

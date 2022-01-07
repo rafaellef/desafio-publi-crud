@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 const Home = () => {
 
   //Importando enderecos
-  const { enderecos } = useEnderecos();
+  const { enderecos, excluirEndereco } = useEnderecos();
 
   const {push} = useRouter();
 
@@ -32,7 +32,12 @@ const Home = () => {
                           <FiEdit />
                           Editar
                         </button>
-                        <button className="bg-red-700 hover:bg-red-600 px-3 py-1 ml-4 mr-4 inline-flex items-center">
+                        <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          excluirEndereco(endereco.id);
+                        }} 
+                        className="bg-red-700 hover:bg-red-600 px-3 py-1 ml-4 mr-4 inline-flex items-center">
                           <BsTrash />
                           Excluir
                         </button>
