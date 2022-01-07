@@ -15,10 +15,15 @@ export const EnderecoProvider = ({ children }) => {
     //Função para adicionar endereço
     const createEndereco = (nome, numero, cep, tipo) => {
         setEnderecos([...enderecos, { nome, numero, cep, tipo, id: uuid() }])
-    }
+    };
+
+    //Função para editar endereco
+    const editarEndereco = (id, enderecoEditado) => {
+        setEnderecos([...enderecos.map(endereco => endereco.id === id ? {...endereco, ...enderecoEditado} : endereco), ]);
+    };
 
     return (
-        <EnderecoContext.Provider value={{ enderecos, createEndereco }}>
+        <EnderecoContext.Provider value={{ enderecos, createEndereco, editarEndereco }}>
             {children}
         </EnderecoContext.Provider>
     )

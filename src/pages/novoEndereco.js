@@ -14,7 +14,7 @@ const EnderecoForm = () => {
         tipo: '',
     });
 
-    const { createEndereco } = useEnderecos();
+    const { createEndereco, editarEndereco, enderecos } = useEnderecos();
 
     const { push, query } = useRouter();
 
@@ -30,15 +30,16 @@ const EnderecoForm = () => {
         if (!query.id) {
             createEndereco(endereco.nome, endereco.numero, endereco.cep, endereco.tipo);
         } else {
-            console.log("Editando")
+            editarEndereco(query.id, endereco)
         }
 
-        // push("/");
+        push("/");
     };
 
     useEffect(() => {
         if (query.id) {
-            console.log(query.id)
+            const enderecoEncontrado = enderecos.find(endereco => endereco.id === query.id)
+            setEndereco({ nome: enderecoEncontrado.nome, numero: enderecoEncontrado.numero, cep: enderecoEncontrado.cep, tipo: enderecoEncontrado.tipo })
         }
     }, [])
 
@@ -52,12 +53,14 @@ const EnderecoForm = () => {
 
                 <input
                     onChange={handleChange}
+                    value={endereco.nome}
                     name="nome"
                     type="text"
                     placeholder="Endereço"
                     className="w-9/12 py-3 px-4 m-5 rounded-lg" />
 
                 <input
+                    value={endereco.numero}
                     type="number"
                     name="numero"
                     onChange={handleChange}
@@ -65,6 +68,7 @@ const EnderecoForm = () => {
                     className="w-9/12 py-3 px-4 m-5 rounded-lg" />
 
                 <input
+                    value={endereco.cep}
                     type="number"
                     name="cep"
                     onChange={handleChange}
@@ -72,6 +76,7 @@ const EnderecoForm = () => {
                     className="w-9/12 py-3 px-4 m-5 rounded-lg" />
 
                 <select
+                    value={endereco.tipo}
                     name="tipo"
                     onChange={handleChange}
                     className="w-9/12 py-3 px-4 m-5 rounded-lg">
