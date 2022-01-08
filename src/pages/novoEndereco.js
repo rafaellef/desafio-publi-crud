@@ -54,6 +54,7 @@ const EnderecoForm = () => {
                 <input
                     onChange={handleChange}
                     value={endereco.nome}
+                    required
                     name="nome"
                     type="text"
                     placeholder="Endereço"
@@ -61,6 +62,7 @@ const EnderecoForm = () => {
 
                 <input
                     value={endereco.numero}
+                    required
                     type="number"
                     name="numero"
                     onChange={handleChange}
@@ -70,6 +72,7 @@ const EnderecoForm = () => {
                 <input
                     value={endereco.cep}
                     type="string"
+                    required
                     name="cep"
                     onChange={handleChange}
                     placeholder="CEP"
@@ -79,6 +82,7 @@ const EnderecoForm = () => {
                     value={endereco.tipo}
                     name="tipo"
                     onChange={handleChange}
+                    required
                     className="w-9/12 py-3 px-4 m-5 rounded-lg">
                     <option></option>
                     <option value="principal">Principal</option>
