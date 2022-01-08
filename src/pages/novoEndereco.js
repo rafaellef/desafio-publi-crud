@@ -69,7 +69,7 @@ const EnderecoForm = () => {
 
                 <input
                     value={endereco.cep}
-                    type="number"
+                    type="string"
                     name="cep"
                     onChange={handleChange}
                     placeholder="CEP"
@@ -80,6 +80,7 @@ const EnderecoForm = () => {
                     name="tipo"
                     onChange={handleChange}
                     className="w-9/12 py-3 px-4 m-5 rounded-lg">
+                    <option></option>
                     <option value="principal">Principal</option>
                     <option value="residencial">Residencial</option>
                     <option value="comercial">Comercial</option>
